@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MultiplyNumbersApp {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("Multiply Two Numbers");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Create panel for layout
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2)); // 3 rows, 2 columns
+        frame.add(panel);
+
+        // Create labels and text fields
+        JLabel num1Label = new JLabel("Enter Number 1:");
+        JTextField num1Field = new JTextField();
+        JLabel num2Label = new JLabel("Enter Number 2:");
+        JTextField num2Field = new JTextField();
+        
+        // Create a label to display the result
+        JLabel resultLabel = new JLabel("Product: ");
+        
+        // Create the multiply button
+        JButton multiplyButton = new JButton("Multiply");
+        
+        // Add components to the panel
+        panel.add(num1Label);
+        panel.add(num1Field);
+        panel.add(num2Label);
+        panel.add(num2Field);
+        panel.add(multiplyButton);
+        panel.add(resultLabel);
+        
+        // Add action listener to the multiply button
+        multiplyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Get the input numbers from the text fields
+                    double num1 = Double.parseDouble(num1Field.getText());
+                    double num2 = Double.parseDouble(num2Field.getText());
+                    
+                    // Calculate the product
+                    double product = num1 * num2;
+                    
+                    // Display the result
+                    resultLabel.setText("Product: " + product);
+                } catch (NumberFormatException ex) {
+                    // Handle invalid input
+                    resultLabel.setText("Please enter valid numbers.");
+                }
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

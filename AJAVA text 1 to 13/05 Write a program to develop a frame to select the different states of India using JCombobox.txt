@@ -1,0 +1,47 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class StateSelectionApp {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("Select Indian States");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a panel for layout
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        frame.add(panel);
+
+        // Create a label for instructions
+        JLabel instructionLabel = new JLabel("Select a state from the dropdown:", SwingConstants.CENTER);
+        instructionLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panel.add(instructionLabel, BorderLayout.NORTH);
+
+        // Create a combo box with Indian states
+        String[] states = {
+            "Maharashtra","Gujrat","Goa","Madhya Pradesh","Karnataka"
+        };
+        JComboBox<String> stateComboBox = new JComboBox<>(states);
+        panel.add(stateComboBox, BorderLayout.CENTER);
+
+        // Create a label to display the selected state
+        JLabel selectedStateLabel = new JLabel("Selected State: None", SwingConstants.CENTER);
+        selectedStateLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panel.add(selectedStateLabel, BorderLayout.SOUTH);
+
+        // Add an ActionListener to the JComboBox
+        stateComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedState = (String) stateComboBox.getSelectedItem();
+                selectedStateLabel.setText("Selected State: " + selectedState);
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

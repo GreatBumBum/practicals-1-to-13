@@ -1,0 +1,36 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class ClickCounterApp {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("Click Counter");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Create a label to display the click count
+        JLabel label = new JLabel("Click Count: 0", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 20));
+        frame.add(label, BorderLayout.CENTER);
+
+        // Variable to keep track of the click count
+        final int[] clickCount = {0};
+
+        // Add mouse listener to the frame to track mouse clicks
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // Increase the click count when the mouse is pressed
+                clickCount[0]++;
+                
+                // Update the label with the new click count
+                label.setText("Click Count: " + clickCount[0]);
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

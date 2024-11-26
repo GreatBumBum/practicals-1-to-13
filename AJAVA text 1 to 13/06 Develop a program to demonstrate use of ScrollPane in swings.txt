@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class ScrollPaneDemo {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("Scroll Pane Demo");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a panel to add components
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        frame.add(panel);
+
+        // Create a JTextArea (large area of text to demonstrate scrolling)
+        JTextArea textArea = new JTextArea();
+        textArea.setText("This is a demonstration of JScrollPane in Java Swing.\n" +
+                "You can scroll through this text by using the scroll bar.\n\n" +
+                "Add more text here...\n\n" +
+                "This is a simple way to create scrollable content.");
+        textArea.setFont(new Font("Arial", Font.PLAIN, 14));
+        textArea.setRows(10);
+        textArea.setColumns(30);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+
+        // Create a JScrollPane and add the JTextArea to it
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        // Add the JScrollPane to the panel
+        panel.add(scrollPane, BorderLayout.CENTER);
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

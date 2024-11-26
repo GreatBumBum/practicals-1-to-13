@@ -1,0 +1,42 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CityListApp {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("City List Application");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a panel to hold components
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        frame.add(panel);
+
+        // Create a list of cities
+        String[] cities = {"New York", "London", "Tokyo", "Sydney", "Paris"};
+        JList<String> cityList = new JList<>(cities);
+        cityList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        cityList.setVisibleRowCount(5);
+
+        // Add the list to a scroll pane
+        JScrollPane scrollPane = new JScrollPane(cityList);
+        panel.add(scrollPane, BorderLayout.CENTER);
+
+        // Create a label to display the selected city
+        JLabel selectedCityLabel = new JLabel("Selected City: None");
+        panel.add(selectedCityLabel, BorderLayout.SOUTH);
+
+        // Add a listener to handle city selection
+        cityList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                String selectedCity = cityList.getSelectedValue();
+                selectedCityLabel.setText("Selected City: " + selectedCity);
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}

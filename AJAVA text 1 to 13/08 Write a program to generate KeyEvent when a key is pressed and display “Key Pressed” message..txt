@@ -1,0 +1,44 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class KeyEventDemo {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("KeyEvent Demo");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a label to display the message
+        JLabel label = new JLabel("Press any key", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 20));
+        frame.add(label);
+
+        // Add a KeyListener to the frame
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // This method is not used in this example
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // This method is called when a key is pressed
+                label.setText("Key Pressed: " + e.getKeyChar());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // This method is not used in this example
+            }
+        });
+
+        // Set the frame to be visible
+        frame.setVisible(true);
+
+        // Make the frame focusable so it can capture key events
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
+    }
+}

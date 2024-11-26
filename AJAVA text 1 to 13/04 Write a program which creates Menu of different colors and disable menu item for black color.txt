@@ -1,0 +1,74 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ColorMenuApp {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("Color Menu");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a label to display the selected color
+        JLabel label = new JLabel("Select a color from the menu", SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.BOLD, 18));
+        label.setOpaque(true); // Allows background color to show
+        frame.add(label, BorderLayout.CENTER);
+
+        // Create a menu bar
+        JMenuBar menuBar = new JMenuBar();
+
+        // Create a menu
+        JMenu colorMenu = new JMenu("Colors");
+
+        // Create menu items
+        JMenuItem redItem = new JMenuItem("Red");
+        JMenuItem greenItem = new JMenuItem("Green");
+        JMenuItem blueItem = new JMenuItem("Blue");
+        JMenuItem blackItem = new JMenuItem("Black");
+
+        // Add menu items to the menu
+        colorMenu.add(redItem);
+        colorMenu.add(greenItem);
+        colorMenu.add(blueItem);
+        colorMenu.add(blackItem);
+
+        // Disable the "Black" menu item
+        blackItem.setEnabled(false);
+
+        // Add the menu to the menu bar
+        menuBar.add(colorMenu);
+
+        // Set the menu bar on the frame
+        frame.setJMenuBar(menuBar);
+
+        // Add action listeners to the menu items
+        redItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setBackground(Color.RED); // Set label background color
+                label.setText("You selected: Red");
+            }
+        });
+
+        greenItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setBackground(Color.GREEN); // Set label background color
+                label.setText("You selected: Green");
+            }
+        });
+
+        blueItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setBackground(Color.BLUE); // Set label background color
+                label.setText("You selected: Blue");
+            }
+        });
+
+        // Show the frame
+        frame.setVisible(true);
+    }
+}

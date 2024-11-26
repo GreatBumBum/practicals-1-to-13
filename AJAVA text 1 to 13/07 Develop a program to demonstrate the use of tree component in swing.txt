@@ -1,0 +1,50 @@
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import java.awt.*;
+
+public class TreeDemo {
+    public static void main(String[] args) {
+        // Create the main frame
+        JFrame frame = new JFrame("JTree Demo");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create the root node (representing a folder or main category)
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+
+        // Create child nodes under the root
+        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Folder 1");
+        DefaultMutableTreeNode node2 = new DefaultMutableTreeNode("Folder 2");
+        DefaultMutableTreeNode node3 = new DefaultMutableTreeNode("Folder 3");
+
+        // Add child nodes to the root node
+        root.add(node1);
+        root.add(node2);
+        root.add(node3);
+
+        // Add more children to node1
+        node1.add(new DefaultMutableTreeNode("File 1.1"));
+        node1.add(new DefaultMutableTreeNode("File 1.2"));
+
+        // Add more children to node2
+        node2.add(new DefaultMutableTreeNode("File 2.1"));
+
+        // Add more children to node3
+        node3.add(new DefaultMutableTreeNode("File 3.1"));
+        node3.add(new DefaultMutableTreeNode("File 3.2"));
+
+        // Create the tree with the root node
+        JTree tree = new JTree(root);
+
+        // Set a preferred size for the tree and add it to a JScrollPane for scrolling
+        tree.setPreferredSize(new Dimension(200, 200));
+        JScrollPane scrollPane = new JScrollPane(tree);
+
+        // Add the scrollPane (with tree) to the frame
+        frame.add(scrollPane, BorderLayout.CENTER);
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
